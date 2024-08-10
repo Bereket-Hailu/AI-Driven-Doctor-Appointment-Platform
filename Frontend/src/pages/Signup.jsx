@@ -1,7 +1,11 @@
-import React from 'react'; 6.9k (gzippped 2.7k)
+import React from 'react'
 
 const Signup = () => {
-  return <div>Signup</div>;
-};
+  return (
+    <div>
+      Signup
+    </div>
+  )
+}
 
-export default Signup;
+export default Signup
