@@ -1,7 +1,11 @@
-import React from 'react'; 6.9k (gzippped 2.7k)
+import React from 'react'
 
 const Contact = () => {
-  return <div>Contact</div>;
-};
+  return (
+    <div>
+      Contact
+    </div>
+  )
+}
 
 export default Contact;

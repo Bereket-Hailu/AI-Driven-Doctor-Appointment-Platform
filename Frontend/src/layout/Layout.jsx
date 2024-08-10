@@ -1,19 +1,17 @@
-import React from "react"; 6.9k (gzipped: 2.7k)
+import React from 'react';
+import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
+import Routers from '../routers/AppRoutes';
+import AppRoutes from '../routers/AppRoutes';
 
-import Header from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
-import Routers from "../routers/Routers";
-
-    const Layout = ()=>{
-        return (
-        <>
-          <Header />
-          <main>
-            <Routers />
-          </main>
-          <Footer />
-        </>
-        );
-};
+const Layout = () => {
+  return <>
+  <Header />
+  <main>
+   <AppRoutes /> 
+  </main>
+  <Footer />
+  </>
+}
 
 export default Layout;
