@@ -39,6 +39,10 @@ const DoctorSchema = new mongoose.Schema({
     default: "pending",
   },
   appointments: [{ type: mongoose.Types.ObjectId, ref: "Appointment" }],
+  approvedBy: { type: mongoose.Types.ObjectId, refPath: 'role' },
+  clinic_id: { type: mongoose.Types.ObjectId, ref: "Clinic" },
+  created_at: { type: Date, default: Date.now },
+  updated_at: { type: Date, default: Date.now },
 });
 
 export default mongoose.model("Doctor", DoctorSchema);
