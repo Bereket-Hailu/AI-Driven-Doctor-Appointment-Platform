@@ -2,7 +2,7 @@ import Doctor from '../models/DoctorSchema.js'
 
 export const updateDoctor = async(req, res) => {
     const id = req.params.id 
-
+ 
     try {
         const updateDoctor = await Doctor.findByIdAndUpdate(
             id,
