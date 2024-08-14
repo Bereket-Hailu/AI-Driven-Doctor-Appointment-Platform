@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  section {
+    @apply py-[75px];
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-full w-[1440px] px-5 mx-auto;
+  }
+  .btn {
+    @apply bg-primaryColor py-4 px-8 rounded-full text-white font-semibold mt-8;
+  }
+
+  .heading {
+    @apply text-4xl leading-[54px] font-bold text-headingColor;
+  }
+  .text__para {
+    @apply text-base leading-7 font-normal mt-4;
+  }
+
+  .header {
+    background-image: url("./assets/images/mask.png");
+    @apply bg-cover w-full h-[100px] bg-center bg-no-repeat;
+  }
+  .hero__section {
+    background-image: url("./assets/images/hero-bg.png");
+    @apply bg-cover bg-center bg-no-repeat;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .heading {
+    @apply text-2xl leading-[36px];
+  }
+  .text__para {
+    @apply text-base leading-7 mt-3;
+  }
+}
