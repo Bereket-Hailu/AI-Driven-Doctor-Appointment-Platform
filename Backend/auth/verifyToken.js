@@ -4,7 +4,7 @@ import User from '../models/UserSchema.js'
 
 export const authenticate = async(req, res, next) => {
     //get token from headers
-    const authToken = req.header.authorization
+    const authToken = req.headers.authorization
 
     //check token is exist
     if (!authToken || !authToken.startsWith("Bearer")){
@@ -15,7 +15,21 @@ export const authenticate = async(req, res, next) => {
 
 
     try{
-        console.log(authToken);
-        next();
-    }catch(err){}
-}
+        const token  = authToken.split(" ")[1];
+         
+        // verify token
+        const decode = jwt.verify(token, process.env.JWT_SECRET_KEY)
+        req.userId = decode.id
+        req.role = decode.role
+
+        next();// calls the next function
+    }catch(err){
+
+        if(err.name === 'TokenExpiredError'){
+            return res.status(401).json({message:'Token is Expired'})
+        }
+
+        return res.status(401).json({success: false, message: 'Invalid token'})
+
+    }
+} 

@@ -1,42 +1,42 @@
 import express from "express"
-import cookieparser from "cookie-parser"
+import cookieParser from "cookie-parser"
 import cors from "cors"
 import mongoose from "mongoose"
 import dotenv from "dotenv"
-import authroute from "./Routes/auth.js";
+import authRoute from "./Routes/auth.js";
+import userRoute from "./Routes/user.js";
+import doctorRoute from "./Routes/doctor.js";
 
 dotenv.config()
 const app = express()
 const port = process.env.PORT || 8000
 
-const corsOptions = {
+const corsOptions = {  
     origin: true
-}
+}; 
 
 app.get("/", (req, res) => {
     res.send("App is working");
-}) 
+});
 
 //connect database
 mongoose.set("strictQuery", false)
-const connectDB = async()=> {
-    try{
-        await mongoose.connect(process.env.MONGO_URL,{
-            useNewUrlParser: true,
-            userUnifiedTopology: true,
-        })
-        console.log('MongoDB database is connected')
-    }
-    catch(error){
-        console.log('MongoDB database is connection failed')
+const connectDB = async () => {
+    try {
+        await mongoose.connect(process.env.MONGO_URL);
+        console.log('MongoDB database connected successfully');
+    } catch (error) {
+        console.error('MongoDB connection error:', error);
     }
 }
 
 //Middleware for the server
-app.use(express.json());
-app.use(cookieparser());
+app.use(express.json()); 
+app.use(cookieParser());
 app.use(cors(corsOptions));
-app.use('/api/v1/auth', authroute)
+app.use('/api/v1/auth', authRoute)
+app.use('/api/v1/users', userRoute)
+app.use('/api/v1/doctors', doctorRoute)
 
 app.listen(port, () => {
     connectDB();
