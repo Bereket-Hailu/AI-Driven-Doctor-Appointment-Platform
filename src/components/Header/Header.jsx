@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
-import logo from '../../assets/images/logo.png';
-import userImg from "../../assets/images/avatar-icon.png";
+import logo from '../../assets/images/logo01.png';
+//import userImg from "../../assets/images/avatar-icon.png";
 import { NavLink, Link } from 'react-router-dom';
 import { BiMenu } from 'react-icons/bi';
 
@@ -40,7 +40,7 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div>
-            <img src={logo} alt="Logo" />
+            <img src={logo} alt="Logo"  className='w-18 h-16'/>
           </div>
           {/* Menu */}
           <div className="navigation">
@@ -62,11 +62,11 @@ const Header = () => {
             </ul>
           </div>
           <div className="flex items-center gap-4">
-            <Link to="/">
+            {/* <Link to="/">
               <figure className="w-[35px] h-[35px] rounded-full cursor-pointer">
                 <img src={userImg} className="w-full rounded-full" alt="User" />
               </figure>
-            </Link>
+            </Link> */}
             <Link to="/login">
               <button className="bg-primaryColor py-2 px-6 text-white font-[600] 
               h-[44px] flex items-center justify-center rounded-[50px]">
