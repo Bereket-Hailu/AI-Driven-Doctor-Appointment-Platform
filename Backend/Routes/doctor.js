@@ -4,7 +4,7 @@ import {updateDoctor, deleteDoctor, getSingleDoctor, getAllDoctor} from "../cont
 
 import { authenticate, restrict } from "../auth/verifyToken.js";
 
-import reviewRouter from ".review.js";
+import reviewRouter from "./review.js";
 const router = express.Router();
 
 //nested route
