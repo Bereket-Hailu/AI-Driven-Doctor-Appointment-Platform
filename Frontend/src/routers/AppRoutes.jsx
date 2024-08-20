@@ -5,7 +5,7 @@ import Contact from '../pages/Contact';
 import Signup from '../pages/Signup';
 import Login from '../pages/Login';
 import Doctors from '../pages/Doctor/Doctors';
-import Doctorsdetails from '../pages/Doctor/Doctorsdetails';
+import Doctorsdetails from '../pages/Doctor/DoctorDetails';
 import { Routes, Route } from 'react-router-dom';  
 const AppRoutes = () => {
   return (
