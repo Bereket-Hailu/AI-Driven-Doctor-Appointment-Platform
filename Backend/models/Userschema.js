@@ -14,6 +14,7 @@ const UserSchema = new mongoose.Schema({
   gender: { type: String, enum: ["male", "female"] },
   bloodType: { type: String },
   appointments: [{ type: mongoose.Types.ObjectId, ref: "Appointment" }],
+  address : { type : String},
 });
 
 export default mongoose.model("User", UserSchema);
