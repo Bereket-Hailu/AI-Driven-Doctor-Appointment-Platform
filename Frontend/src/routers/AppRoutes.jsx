@@ -6,17 +6,19 @@ import Signup from '../pages/Signup';
 import Login from '../pages/Login';
 import Doctors from '../pages/Doctor/Doctors';
 import Doctorsdetails from '../pages/Doctor/DoctorDetails';
-import { Routes, Route } from 'react-router-dom';  
+import { Routes, Route, Navigate } from 'react-router-dom';  
+
 const AppRoutes = () => {
   return (
-    <Routes> 
-      <Route path="/home" element={<Home />} /> 
+    <Routes>
+      <Route path="/" element={<Home />} /> {/* Default route */}
       <Route path="/services" element={<Services />} />
       <Route path="/doctors" element={<Doctors />} />
-      <Route path="/ doctordetails" element={<Doctorsdetails />} />
+      <Route path="/doctorsdetails" element={<Doctorsdetails />} /> {}
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />
       <Route path="/contact" element={<Contact />} />
+      <Route path="*" element={<Navigate to="/" />} /> {/* Redirects unknown routes to Home */}
     </Routes>
   );
 };
