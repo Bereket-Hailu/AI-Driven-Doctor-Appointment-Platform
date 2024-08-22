@@ -11,6 +11,7 @@ import MyAccount from '../Dashboard/user-account/MyAccount';
 import Dashboard from "../Dashboard/doctor-account/Dashboard"
 
 import { Routes, Route, Navigate } from 'react-router-dom'; 
+import ProtectedRoute from './ProtectedRoute';
 
 
 const AppRoutes = () => {
@@ -25,7 +26,8 @@ const AppRoutes = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="*" element={<Navigate to="/" />} /> {/* Redirects unknown routes to Home */}
-      <Route path='/users/profile/me' element = {<MyAccount />} />
+      <Route path='/users/profile/me' element = {<ProtectedRoute allowedRoles= {['patient']} ><MyAccount /></ProtectedRoute>} />
+      <Route path='/doctors/profile/me' element = {<ProtectedRoute allowedRoles={['doctor']}><Dashboard /></ProtectedRoute>} />
     </Routes>
   );
 };
