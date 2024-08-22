@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import signupImg from "../assets/images/signup.gif";
 import { Link, useNavigate } from "react-router-dom";
 import uploadImageToCloudinary from '../utils/uploadCloudinary';
 import { BASE_URL } from '../config';
 import { toast } from 'react-toastify';
 import HashLoader from 'react-spinners/HashLoader';
+import Datetime from 'react-datetime';
+
 
 const Signup = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -36,9 +38,9 @@ const Signup = () => {
     setSelectedFile(data.url);
     setFormData({ ...formData, photo: data.url });
   };
-
   const submitHandler = async (event) => {
     event.preventDefault();
+    console.log('formData')
     setLoading(true);
 
     try {
@@ -225,7 +227,7 @@ const Signup = () => {
                   {/* Submit Button */}
                   <div className="flex justify-between mt-7">
                     {role !== '' && (
-                      <button 
+                      <button disabled = {loading && true}
                         type='submit' 
                         className='w-full bg-primaryColor text-white text-[18px] leading-[30px] rounded-lg px-4 py-3 mt-10'>
                         {loading ? <HashLoader size={25} color='#ffffff'/> : 'Signup'}

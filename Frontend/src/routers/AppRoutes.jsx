@@ -6,8 +6,12 @@ import Signup from '../pages/Signup';
 import DoctorSignup from '../pages/DoctorSignup';
 import Login from '../pages/Login';
 import Doctors from '../pages/Doctor/Doctors';
-import DoctorDetails from '../pages/Doctors/DoctorDetails';
-import { Routes, Route, Navigate } from 'react-router-dom';  
+import DoctorDetails from '../pages/Doctor/DoctorDetails';
+import MyAccount from '../Dashboard/user-account/MyAccount'; 
+import Dashboard from "../Dashboard/doctor-account/Dashboard"
+
+import { Routes, Route, Navigate } from 'react-router-dom'; 
+
 
 const AppRoutes = () => {
   return (
@@ -21,6 +25,7 @@ const AppRoutes = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="*" element={<Navigate to="/" />} /> {/* Redirects unknown routes to Home */}
+      <Route path='/users/profile/me' element = {<MyAccount />} />
     </Routes>
   );
 };
