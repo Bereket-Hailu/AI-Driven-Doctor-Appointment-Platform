@@ -161,6 +161,7 @@
 
 import User from '../models/UserSchema.js'
 import Doctor from '../models/DoctorSchema.js'
+import clinicAdmin from '../models/ClinicAdminSchema.js'
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
 
@@ -180,6 +181,8 @@ export const register = async (req, res) => {
             user = await User.findOne({ email });
         } else if (role === 'doctor') {
             user = await Doctor.findOne({ email });
+        } else if (role === 'clinicAdmin'){
+            user = await clinicAdmin.findone({email});
         }
 
         // Check if user exists
@@ -213,6 +216,17 @@ export const register = async (req, res) => {
             });
         }
 
+        if (role === 'clinicAdmin') {
+            user = new clinicAdmin({
+                name,
+                email,
+                password: hashPassword,
+                photo,
+                gender,
+                role
+            });
+        }
+
         await user.save();
         res.status(200).json({ success: true, message: 'User successfully created' });
     } catch (err) {
@@ -234,6 +248,7 @@ export const login = async (req, res) => {
         if (doctor) {
             user = doctor;
         }
+        
 
         // Check if the user exists
         if (!user) {

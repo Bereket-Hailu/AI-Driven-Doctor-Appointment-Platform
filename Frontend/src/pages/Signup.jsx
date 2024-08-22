@@ -6,7 +6,7 @@ import { BASE_URL } from '../config';
 import { toast } from 'react-toastify';
 import HashLoader from 'react-spinners/HashLoader';
 import Datetime from 'react-datetime';
-
+import 'react-datetime/css/react-datetime.css';
 
 const Signup = () => {
   const [selectedFile, setSelectedFile] = useState(null);
