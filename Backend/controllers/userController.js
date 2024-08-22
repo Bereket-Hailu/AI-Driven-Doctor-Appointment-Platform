@@ -1,6 +1,12 @@
 import User from "../models/UserSchema.js";
+<<<<<<< HEAD
 import Booking from "../models/Bookingschema.js";
 import Doctor from "../models/DoctorSchema.js";
+=======
+import Booking from "../models/BookingSchema.js"
+import Doctor from "../models/DoctorSchema.js"
+
+>>>>>>> a709a73ad9aa069a9aa6fdee1477bead889eb05f
 export const updateUser = async(req, res) => {
     const id = req.params.id 
 
@@ -76,6 +82,7 @@ export const getAllUser = async(req, res) => {
     }
 };
 
+<<<<<<< HEAD
 export const getUserProfile = async(req, res) => {
     const userId = req.userId
 
@@ -84,10 +91,23 @@ export const getUserProfile = async(req, res) => {
 
         if(!user){
             return res.status(404).json({success:false, message:'User not found'})
+=======
+export const getUserProfile = async(req,res) => {
+    const userId = req.userId;
+
+    try {
+        const user = await User.findById(userId);
+
+        if(!user){
+            return res
+                .status(404)
+                .json({ success: false, message: "User not found"})
+>>>>>>> a709a73ad9aa069a9aa6fdee1477bead889eb05f
         }
 
         const {password, ...rest} = user._doc
 
+<<<<<<< HEAD
         res.status(200).json({success:true, message:'profile info is getting', data:{...rest}})
     }catch(err){
         res.status(500).json({success:false, message:'Something went wrong, cannot get'});
@@ -107,3 +127,24 @@ export const getMyAppointments = async(req, res)=>{
         return res.status(404).json({success:false, message:'User not found'});
     }
 };
+=======
+        res.status(200).json({success:true, messsage:'Profile info is getting', data:{...rest}})
+    }catch (err){
+        res.status(500).json({success: false, message: "Something went wrong, cannot get"})
+    }
+}
+
+export const getMyAppointments = async(req,res) => {
+    try{
+        const bookings = await Booking.find({user:req.userId})
+        const doctorIds = bookings.map(el => el.doctor.id)
+        const doctors = await Doctor.find()
+
+        res.status(200).json({success:true, message:'Appointments are getting', data:doctors})
+    }catch(err){
+        res
+            .status(500)
+            .json({success: false, message: "Something went wrong, cannot get"})
+    }
+}
+>>>>>>> a709a73ad9aa069a9aa6fdee1477bead889eb05f

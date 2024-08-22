@@ -1,8 +1,9 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useContext } from 'react';
 import logo from '../../assets/images/logo01.png';
-//import userImg from "../../assets/images/avatar-icon.png";
+// import userImg from "../../assets/images/avatar-icon.png";
 import { NavLink, Link } from 'react-router-dom';
 import { BiMenu } from 'react-icons/bi';
+import { authContext } from '../../context/AuthContext';
 
 const navlinks = [
   { path: '/home', display: 'Home' },
@@ -13,6 +14,8 @@ const navlinks = [
 
 const Header = () => {
   const headerRef = useRef(null);
+  const menuRef = useRef(null);
+  const {user, role, token} = useContext(authContext);
 
   const handleStickyHeader = () => {
     const handleScroll = () => {
@@ -61,18 +64,34 @@ const Header = () => {
               ))}
             </ul>
           </div>
+
           <div className="flex items-center gap-4">
-            {/* <Link to="/">
-              <figure className="w-[35px] h-[35px] rounded-full cursor-pointer">
-                <img src={userImg} className="w-full rounded-full" alt="User" />
-              </figure>
-            </Link> */}
+
+          {
+            token && user ? ( 
+            <div>
+            <link to= {`${role ==='doctor' ? '/doctors/profile/me' : '/user/profile/me'}`}>
+            <figure className='w-[35px] h-[35px] rounded-full cursor-pointer'>
+              <img 
+                src= {user?.photo}
+                className='w-full rounded-full' 
+                alt="" />
+            </figure>
+
+            <h2>{user?.name}</h2>
+
+            </link>
+            </div>)
+            :(            
             <Link to="/login">
               <button className="bg-primaryColor py-2 px-6 text-white font-[600] 
               h-[44px] flex items-center justify-center rounded-[50px]">
                 Login
               </button>
             </Link>
+
+            )}
+
             <Link to="/signup">
               <button className="bg-primaryColor py-2 px-6 text-white font-[600] 
               h-[44px] flex items-center justify-center rounded-[50px]">
