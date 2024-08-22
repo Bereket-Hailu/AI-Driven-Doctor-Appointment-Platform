@@ -5,9 +5,11 @@ const clinicAdminSchema = new mongoose.Schema({
   password: { type: String, required: true },
   name: { type: String, required: true },
   phone: { type: Number },
-<<<<<<< HEAD
+
   role: {
     type: String,
+    default: "clinicAdmin", 
+    enum: ["clinicAdmin"] 
   },
 
   isApproved: {
@@ -15,20 +17,9 @@ const clinicAdminSchema = new mongoose.Schema({
     enum: ["pending", "approved", "cancelled"],
     default: "pending",
   },
-  clinic_id: { type: mongoose.Types.ObjectId, ref: "Clinic" },
+  clinic_id: { type: mongoose.Types.ObjectId, ref: "Clinic",required: true },
   approvedBy: { type: mongoose.Types.ObjectId, refPath: 'role' },
-=======
-  role: { 
-    type: String, 
-    default: "clinicAdmin", 
-    enum: ["clinicAdmin"] 
-  },
-  clinic_id: { 
-    type: mongoose.Types.ObjectId, 
-    ref: "Clinic", 
-    required: true // Ensure the ClinicAdmin is always linked to a clinic
-  },
->>>>>>> a709a73ad9aa069a9aa6fdee1477bead889eb05f
+
   created_at: { type: Date, default: Date.now },
   updated_at: { type: Date, default: Date.now },
 });

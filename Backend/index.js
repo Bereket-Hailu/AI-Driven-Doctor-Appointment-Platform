@@ -7,13 +7,10 @@ import authRoute from "./Routes/auth.js";
 import userRoute from "./Routes/user.js";
 import doctorRoute from "./Routes/doctor.js";
 import reviewRoute from "./Routes/review.js";
-<<<<<<< HEAD
-import bookingRoute from './Routes/booking.js'
-=======
 import clinicRoute from "./Routes/clinicRoutes.js";
+import bookingRoute from "./Routes/booking.js"
 import clinicAdminRoute from "./Routes/clinicAdminRoutes.js";
 import adminRoute from "./Routes/adminRoutes.js";
->>>>>>> a709a73ad9aa069a9aa6fdee1477bead889eb05f
 dotenv.config()
 const app = express()
 const port = process.env.PORT || 8000
@@ -45,13 +42,11 @@ app.use('/api/v1/auth', authRoute)
 app.use('/api/v1/users', userRoute)
 app.use('/api/v1/doctors', doctorRoute)
 app.use('/api/v1/reviews', reviewRoute)
-<<<<<<< HEAD
+
 app.use('/api/v1/bookings', bookingRoute)
-=======
 app.use('/api/v1/clinics', clinicRoute);
 app.use('/api/v1/clinic-admin', clinicAdminRoute);
 app.use('/api/v1/admin', adminRoute);
->>>>>>> a709a73ad9aa069a9aa6fdee1477bead889eb05f
 
 app.listen(port, () => {
     connectDB();

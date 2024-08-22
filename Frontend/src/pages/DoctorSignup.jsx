@@ -16,6 +16,7 @@ const DoctorSignup = () => {
     email: '',
     password: '',
     gender: '',
+    role: "doctor",
     photo: '',
     phone: '',
     address: '',
