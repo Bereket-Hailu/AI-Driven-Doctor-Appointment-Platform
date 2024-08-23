@@ -28,7 +28,7 @@ const Profile = () => {
 
   const handleUpdateProfile = (e) => {
     e.preventDefault();
-    // Update profile logic here
+ 
   };
 
   const addItem = (key, newItem) => {
@@ -50,7 +50,7 @@ const Profile = () => {
     addItem("qualification", { startingDate: "", endingDate: "", degree: "", university: "" });
   };
 
-  const removeQualification = (index) => {
+  const deleteQualification = (index) => {
     setFormData((prevFormData) => ({
       ...prevFormData,
       qualification: prevFormData.qualification.filter((_, i) => i !== index),
@@ -163,7 +163,7 @@ const Profile = () => {
               </div>
               <button
                 type="button"
-                onClick={() => removeQualification(index)}
+                onClick={ e => deleteQualification(index, e)}
                 className="bg-red-600 p-2 rounded-full text-white text-[16px] mt-2 mb-[30px] cursor-pointer"
               >
                 <AiOutlineDelete />
