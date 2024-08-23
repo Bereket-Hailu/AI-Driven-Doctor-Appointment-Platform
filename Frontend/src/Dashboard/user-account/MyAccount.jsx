@@ -3,7 +3,7 @@ import { authContext } from '../../context/AuthContext'
 import MyBookings from './MyBookings'
 import Profile from './Profile'
 
-import useGetProfile from '../.../useFetchData'
+import useGetProfile from '../../hooks/useFetchData'
 import { BASE_URL } from '../../config'
 
 import Loading from '../../components/Loader/Loading'
@@ -38,7 +38,7 @@ const MyAccount = () => {
               <img src="userImg" alt="" className='w-full h-full rounded-full' />
             </figure>
           </div>
-  
+   
           <div className='text-center mt-4'>
             <h3 className='text-[18px] leading-[30px] text-headingColor font-bold'>
               {userData.name}
