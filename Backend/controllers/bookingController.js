@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 import User from "../models/UserSchema.js";
 import Doctor from "../models/DoctorSchema.js";
 import Stripe from "stripe";
 import Booking from "../models/BookingSchema.js";
+=======
+import User from '../models/UserSchema.js'
+import Doctor from '../models/DoctorSchema.js'
+import Booking from '../models/BookingSchema.js'
+import Stripe from 'stripe'
+>>>>>>> 1fea70522d8504d974015f8173f7dd21cf236292
 
 export const getCheckoutSession = async (req, res) => {
   try {
