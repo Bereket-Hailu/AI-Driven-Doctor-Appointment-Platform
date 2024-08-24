@@ -1,12 +1,5 @@
 import Doctor from '../models/DoctorSchema.js'
-<<<<<<< HEAD
 import Booking from '../models/BookingSchema.js'
-=======
-
-import Booking from '../models/Bookingschema.js';
-
-
->>>>>>> f51f07b4c508cec8b71f52a97765050da49125bd
 
 export const updateDoctor = async(req, res) => {
     const id = req.params.id 
